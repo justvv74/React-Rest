@@ -76,9 +76,10 @@ export function CardsList() {
 
   useEffect(() => {
     if (listLoaded) {
+      if (list[0].id === "0") {
+        setList([]);
+      }
       setList((prevList) => prevList.concat(...listData));
-    } else {
-      setList(listData);
     }
     setListLoaded(true);
   }, [listData]);

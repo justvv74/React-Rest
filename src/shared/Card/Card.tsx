@@ -3,7 +3,6 @@ import { IItem } from "../CardsList/GenericCardsList";
 import { CardSwiper } from "./CardSwiper";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
 
 interface ICard {
   data: IItem;

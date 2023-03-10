@@ -40,7 +40,6 @@ export const postDataRequestAsync = (id: string): ThunkAction<void, RootState, u
       const {data} = await axios.get(`https://testguru.ru/frontend-test/api/v1/ads/${id}`, {
     });
       dispatch(postDataRequestSuccess(data));
-      console.log('res', data)
     } catch (error) {
       dispatch(postDataRequestError(String(error)));
     }

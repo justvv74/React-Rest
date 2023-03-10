@@ -30,7 +30,8 @@ type MyAction = (
   PostDataRequestAction |
   PostDataRequestSuccessAction |
   PostDataRequestErrorAction
-  )
+)
+
 export const rootReduser: Reducer<RootState, MyAction> = (state = initialState, action) => {
   switch (action.type) {
     case POST_LIST_REQUEST:
