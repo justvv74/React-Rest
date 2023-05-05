@@ -45,7 +45,7 @@ const LoadingError = styled.div`
 
 export function CardsList() {
   const skeletonList = Array.from(Array(20), () => {
-    return { id: "0" };
+    return { id: 0 };
   });
 
   const [list, setList] = useState(skeletonList);
@@ -56,7 +56,7 @@ export function CardsList() {
 
   const listData = useSelector<RootState, any>((state) => state.postList.data);
   const listPage = useSelector<RootState, number>(
-    (state) => state.postList.pages
+    (state) => state.postList.page
   );
   const listLoading = useSelector<RootState, boolean>(
     (state) => state.postList.loading
@@ -76,7 +76,7 @@ export function CardsList() {
 
   useEffect(() => {
     if (listLoaded) {
-      if (list[0].id === "0") {
+      if (list[0].id === 0) {
         setList([]);
       }
       setList((prevList) => prevList.concat(...listData));
@@ -89,6 +89,7 @@ export function CardsList() {
     dispatch(listListRequestAsync(page));
   }
 
+  console.log("pages", listPages);
   return (
     <>
       <GenericCardsList list={list} />

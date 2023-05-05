@@ -8,13 +8,10 @@ interface IGenericCardsList {
 }
 
 export interface IItem {
-  id: string;
-  about?: string;
-  createdAt?: string;
-  seen?: boolean;
-  price?: number;
+  id: number;
+  body?: string;
   title?: string;
-  address?: string;
+  user_id?: number;
 }
 
 const Container = styled.ul`
@@ -39,11 +36,10 @@ const Container = styled.ul`
 
 export function GenericCardsList({ list }: IGenericCardsList) {
   const random = () => Math.random().toString(36).substring(2, 15);
-
   return (
     <Container>
       {list.map((item) =>
-        item.id === "0" ? (
+        item.id === 0 ? (
           <SkeletonCard key={random()} />
         ) : (
           <Card key={item.id} data={item} />

@@ -60,44 +60,6 @@ const LikeBtn = styled.button`
   }
 `;
 
-const AddressRow = styled.p`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Address = styled.span`
-  color: var(--grey8F);
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 400;
-`;
-
-const Time = styled.time`
-  color: var(--grey8F);
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 400;
-`;
-
-const Seen = styled.div`
-  z-index: 100;
-  position: absolute;
-  top: 12px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-`;
-
-const SeenText = styled.p`
-  border-radius: 8px;
-  padding: 5px 8px;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 400;
-  background-color: var(--white);
-`;
-
 const StyledLink = styled(Link)`
   position: absolute;
   top: 0;
@@ -107,12 +69,17 @@ const StyledLink = styled(Link)`
 `;
 
 export function Card({ data }: ICard) {
+  console.log(typeof data.id);
   return (
     <Container>
       <CardSwiper />
       <TextBox>
         <PriceRow>
-          <Price>{`${data.price} ₽`}</Price>
+          <Price>
+            {data.title && data.title.length > 20
+              ? `${data.title.substring(0, 20)} ...`
+              : data.title}
+          </Price>
           <LikeBtn>
             <svg
               width="20"
@@ -128,29 +95,14 @@ export function Card({ data }: ICard) {
             </svg>
           </LikeBtn>
         </PriceRow>
-        <Title>{data.title}</Title>
-        <AddressRow>
-          <Address>{data.address?.replace(/\d/g, "")}</Address>
-          <Time
-            dateTime={
-              (data.createdAt?.substring(0, 10),
-              data.createdAt?.substring(11, 16))
-            }
-          >
-            {`${data.createdAt
-              ?.substring(0, 10)
-              .replace(/-/g, ".")}, ${data.createdAt
-              ?.substring(11, 16)
-              .replace(/:/g, ".")}`}
-          </Time>
-        </AddressRow>
+        <Title>
+          {data.body && data.body.length > 100
+            ? `${data.body?.substring(0, 100)} ...`
+            : data.body}
+        </Title>
+
         <StyledLink to={`/${data.id}`}></StyledLink>
       </TextBox>
-      {data.seen && (
-        <Seen>
-          <SeenText>Просмотрено</SeenText>
-        </Seen>
-      )}
     </Container>
   );
 }

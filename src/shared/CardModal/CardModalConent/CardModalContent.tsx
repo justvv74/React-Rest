@@ -183,9 +183,9 @@ export function CardModalContent({ data }: ICardModal) {
       )}
       <TextBox>
         {!loading ? <Title>{data.title}</Title> : <EmptyTitle />}
-        {!loading ? <Descr>{data.about}</Descr> : <EmptyDescr />}
+        {!loading ? <Descr>{data.body}</Descr> : <EmptyDescr />}
         <PriceRow>
-          {!loading ? <Price>{`${data.price} ₽`}</Price> : <EmptyPrice />}
+          {!loading ? <Price>{`Post id: ${data.id}`}</Price> : <EmptyPrice />}
           {!loading ? (
             <LikeBtn>
               <svg
@@ -205,29 +205,6 @@ export function CardModalContent({ data }: ICardModal) {
             <EmptyLikeBtn />
           )}
         </PriceRow>
-        <AddressRow>
-          {!loading ? (
-            <Address>{data.address?.replace(/\d/g, "")}</Address>
-          ) : (
-            <EmptyAddress />
-          )}
-          {!loading ? (
-            <Time
-              dateTime={
-                (data.createdAt?.substring(0, 10),
-                data.createdAt?.substring(11, 16))
-              }
-            >
-              {`${data.createdAt
-                ?.substring(0, 10)
-                .replace(/-/g, ".")}, ${data.createdAt
-                ?.substring(11, 16)
-                .replace(/:/g, ".")}`}
-            </Time>
-          ) : (
-            <EmptyTime />
-          )}
-        </AddressRow>
       </TextBox>
       {loading && <Spiner></Spiner>}
     </>

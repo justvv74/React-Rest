@@ -10,12 +10,10 @@ import { CardModalError } from "./CardModalError";
 
 export interface ICardModal {
   data: {
-    price: number;
+    id: number;
+    body: string;
     title: string;
-    seen: boolean;
-    createdAt: string;
-    about: string;
-    address: string;
+    user_id: number;
   };
 }
 

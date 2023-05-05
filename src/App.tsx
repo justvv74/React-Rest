@@ -23,9 +23,7 @@ function App() {
     <Provider store={store}>
       {mounted && (
         <BrowserRouter>
-          {/* <Layout> */}
           <RoutesList />
-          {/* </Layout> */}
         </BrowserRouter>
       )}
     </Provider>
