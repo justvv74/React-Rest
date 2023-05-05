@@ -6,8 +6,10 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 
 const CardImage = styled.img`
-  height: 260px;
-  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const StyledSwiper = styled(Swiper)`
@@ -22,7 +24,7 @@ export function CardSwiper() {
       pagination={true}
       modules={[Pagination]}
     >
-      {[1, 2, 3, 4, 5].map((item) => {
+      {[1, 2, 3].map((item) => {
         const random = Math.floor(Math.random() * (100000 - 0) + 0);
         return (
           <SwiperSlide key={random}>
