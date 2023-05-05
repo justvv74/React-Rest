@@ -89,7 +89,6 @@ export function CardsList() {
     dispatch(listListRequestAsync(page));
   }
 
-  console.log("pages", listPages);
   return (
     <>
       <GenericCardsList list={list} />

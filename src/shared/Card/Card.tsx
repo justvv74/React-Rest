@@ -69,7 +69,6 @@ const StyledLink = styled(Link)`
 `;
 
 export function Card({ data }: ICard) {
-  console.log(typeof data.id);
   return (
     <Container>
       <CardSwiper />

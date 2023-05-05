@@ -49,11 +49,8 @@ export const listListRequestAsync =
         dispatch(
           postListRequestSuccess(res.data, res.headers["x-pagination-pages"])
         );
-        console.log(res.data);
-        console.log(res.headers["x-pagination-pages"]);
       })
       .catch((err) => {
         dispatch(postListRequestError(String(err)));
-        console.log(err);
       });
   };
